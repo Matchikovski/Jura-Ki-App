@@ -1,0 +1,11 @@
+# Virtuelle Umgebung ignorieren
+venv/
+
+# Alte .env Datei ignorieren
+.env
+
+# Streamlit Secrets Datei ignorieren
+.streamlit/secrets.toml
+
+# Python Cache Ordner ignorieren
+__pycache__/

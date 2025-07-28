@@ -1,0 +1,338 @@
+[
+  {
+    "fall_titel": "Vertragen die sich?",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Zustandekommen eines Vertrags (§§ 145ff. BGB)",
+    "kernfrage": "Liegt ein wirksamer Vertragsschluss zwischen den Parteien vor?",
+    "kurzloesung": "Das Zustandekommen eines Vertrags erfordert zwei übereinstimmende Willenserklärungen (Angebot und Annahme), die sich inhaltlich decken müssen."
+  },
+  {
+    "fall_titel": "Schlechtes Timing",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Zeitliche Bindung an das Angebot und verspätete Annahme (§§ 146, 150 BGB)",
+    "kernfrage": "Kann ein Angebot noch wirksam angenommen werden, wenn die Annahmefrist abgelaufen ist?",
+    "kurzloesung": "Eine verspätete Annahme gilt als neues Angebot. Die Bindung an das ursprüngliche Angebot erlischt mit Fristablauf."
+  },
+  {
+    "fall_titel": "Der Fußballer",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Wirksamkeit von Willenserklärungen unter Bedingungen",
+    "kernfrage": "Ist eine Willenserklärung wirksam, wenn sie unter einer aufschiebenden Bedingung abgegeben wurde?",
+    "kurzloesung": "Willenserklärungen können unter Bedingungen abgegeben werden. Bei aufschiebender Bedingung wird das Rechtsgeschäft erst mit Bedingungseintritt wirksam."
+  },
+  {
+    "fall_titel": "E-Mail-Bombardement",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Zugang elektronischer Willenserklärungen (§ 130 BGB)",
+    "kernfrage": "Wann ist eine per E-Mail übermittelte Willenserklärung zugegangen?",
+    "kurzloesung": "E-Mails gehen zu, wenn mit der Kenntnisnahme unter normalen Umständen zu rechnen ist, bei Geschäftsleuten typischerweise während der Geschäftszeiten."
+  },
+  {
+    "fall_titel": "Heißhunger",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Vertragsschluss durch sozialtypisches Verhalten",
+    "kernfrage": "Kommt ein Kaufvertrag auch ohne ausdrückliche Erklärungen durch konkludentes Verhalten zustande?",
+    "kurzloesung": "Ja, Verträge können durch schlüssiges Verhalten geschlossen werden, wenn dieses nach der Verkehrssitte als Willenserklärung zu verstehen ist."
+  },
+  {
+    "fall_titel": "Wie jetzt?",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Dissens beim Vertragsschluss (§§ 154, 155 BGB)",
+    "kernfrage": "Liegt ein wirksamer Vertrag vor, wenn sich die Parteien über wesentliche Punkte nicht einig sind?",
+    "kurzloesung": "Bei einem offenen Dissens über wesentliche Vertragspunkte kommt kein Vertrag zustande. Im Zweifel ist der gesamte Vertrag nicht geschlossen (§ 154 BGB)."
+  },
+  {
+    "fall_titel": "Schweigen ist Gold",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Schweigen als Willenserklärung",
+    "kernfrage": "Kann Schweigen auf ein Angebot als Annahme gewertet werden?",
+    "kurzloesung": "Grundsätzlich nein. Schweigen gilt nur ausnahmsweise als Zustimmung, etwa bei Kaufleuten im Rahmen bestehender Geschäftsbeziehungen."
+  },
+  {
+    "fall_titel": "Das Ölgemälde",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Auslegung von Willenserklärungen (§§ 133, 157 BGB)",
+    "kernfrage": "Wie sind mehrdeutige Willenserklärungen auszulegen?",
+    "kurzloesung": "Willenserklärungen sind nach dem objektiven Empfängerhorizont unter Berücksichtigung von Treu und Glauben und der Verkehrssitte auszulegen."
+  },
+  {
+    "fall_titel": "Bei Annahme Tod",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Tod des Antragenden vor Annahme (§ 153 BGB)",
+    "kernfrage": "Erlischt ein Angebot mit dem Tod des Antragenden?",
+    "kurzloesung": "Im Zweifel ja, es sei denn, aus den Umständen ergibt sich ein anderer Wille des Verstorbenen (§ 153 BGB)."
+  },
+  {
+    "fall_titel": "Zu früh gefreut",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Widerruf der Annahme (§ 130 I 2 BGB)",
+    "kernfrage": "Kann eine bereits abgesendete Annahmeerklärung noch widerrufen werden?",
+    "kurzloesung": "Ja, wenn der Widerruf dem Antragenden vor oder gleichzeitig mit der Annahme zugeht (§ 130 I 2 BGB)."
+  },
+  {
+    "fall_titel": "3 … 2 … 1 … Meins?",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Versteigerung und Zuschlag (§ 156 BGB)",
+    "kernfrage": "Wann kommt bei einer Versteigerung der Vertrag zustande?",
+    "kurzloesung": "Der Vertrag kommt erst mit dem Zuschlag zustande. Bis dahin können Gebote zurückgenommen werden (§ 156 BGB)."
+  },
+  {
+    "fall_titel": "Wenn der Vater mit dem Sohne",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Botenschaft und Stellvertretung",
+    "kernfrage": "Wann liegt Botenschaft und wann Stellvertretung vor?",
+    "kurzloesung": "Ein Bote übermittelt nur fremde Willenserklärungen, ein Stellvertreter gibt eigene Willenserklärungen im Namen des Vertretenen ab."
+  },
+  {
+    "fall_titel": "Kater und andere Tiere",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Geschäftsfähigkeit bei Trunkenheit",
+    "kernfrage": "Sind Willenserklärungen eines Betrunkenen wirksam?",
+    "kurzloesung": "Bei vorübergehender Störung der Geistestätigkeit durch Alkohol liegt Geschäftsunfähigkeit vor (§ 105 II BGB), die Willenserklärung ist nichtig."
+  },
+  {
+    "fall_titel": "Netter Versuch",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Widerruf einer Willenserklärung",
+    "kernfrage": "Unter welchen Voraussetzungen kann eine Willenserklärung widerrufen werden?",
+    "kurzloesung": "Ein Widerruf ist möglich, wenn er vor oder gleichzeitig mit der Willenserklärung beim Empfänger ankommt (§ 130 I 2 BGB)."
+  },
+  {
+    "fall_titel": "Silvesterknaller",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Zeitpunkt des Zugangs von Willenserklärungen",
+    "kernfrage": "Wann gehen Willenserklärungen außerhalb der Geschäftszeiten zu?",
+    "kurzloesung": "Willenserklärungen, die außerhalb der Geschäftszeiten eingehen, gelten erst am nächsten Werktag als zugegangen."
+  },
+  {
+    "fall_titel": "Der ehrliche Finder",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Rechtsgeschäfte mit Minderjährigen",
+    "kernfrage": "Wann sind Rechtsgeschäfte mit beschränkt Geschäftsfähigen wirksam?",
+    "kurzloesung": "Rechtsgeschäfte beschränkt Geschäftsfähiger bedürfen der Einwilligung der Eltern, es sei denn, sie sind lediglich rechtlich vorteilhaft (§ 107 BGB)."
+  },
+  {
+    "fall_titel": "Riesling-Rangeleien",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Eigentumsübertragung und Besitzerlangung",
+    "kernfrage": "Wie wird Eigentum an beweglichen Sachen übertragen?",
+    "kurzloesung": "Durch Einigung und Übergabe (§ 929 S. 1 BGB). Die Übergabe kann durch Übergabesurrogate ersetzt werden."
+  },
+  {
+    "fall_titel": "Hamburger Parkplatzfall",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Vertragsschluss bei Parkplatznutzung",
+    "kernfrage": "Kommt durch das Abstellen eines Fahrzeugs auf einem Parkplatz ein Vertrag zustande?",
+    "kurzloesung": "Ja, durch konkludentes Verhalten kommt regelmäßig ein Verwahrungsvertrag oder Mietvertrag zustande, wenn der Parkplatz bewirtschaftet wird."
+  },
+  {
+    "fall_titel": "Haakjöringsköd",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Falsa demonstratio non nocet",
+    "kernfrage": "Ist ein Vertrag wirksam, wenn beide Parteien dasselbe meinen, aber falsch bezeichnen?",
+    "kurzloesung": "Ja, wenn beide Parteien übereinstimmend dasselbe wollten, schadet die falsche Bezeichnung nicht (falsa demonstratio non nocet)."
+  },
+  {
+    "fall_titel": "Der kleine Unterschied",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Dissens über Nebenpunkte (§ 155 BGB)",
+    "kernfrage": "Ist ein Vertrag wirksam, wenn Einigkeit über die Hauptpunkte, aber Dissens über Nebenpunkte besteht?",
+    "kurzloesung": "Bei Dissens über Nebenpunkte ist der Vertrag wirksam, wenn anzunehmen ist, dass er auch ohne diese Punkte geschlossen worden wäre (§ 155 BGB)."
+  },
+  {
+    "fall_titel": "Mietertraum",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Schriftformerfordernis bei Mietverträgen (§ 550 BGB)",
+    "kernfrage": "Welche Form müssen langfristige Mietverträge haben?",
+    "kurzloesung": "Mietverträge über mehr als ein Jahr bedürfen der Schriftform, sonst gelten sie auf unbestimmte Zeit geschlossen (§ 550 BGB)."
+  },
+  {
+    "fall_titel": "Ortsübliche Streitigkeiten",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Vertragsauslegung nach der Verkehrssitte",
+    "kernfrage": "Welche Rolle spielt die Verkehrssitte bei der Vertragsauslegung?",
+    "kurzloesung": "Die Verkehrssitte ist bei der Auslegung von Willenserklärungen zu berücksichtigen (§ 157 BGB) und kann Vertragsinhalt werden (§ 242 BGB)."
+  },
+  {
+    "fall_titel": "Feine Freunde",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Trennungsprinzip zwischen Verpflichtung und Verfügung",
+    "kernfrage": "Sind Verpflichtungs- und Verfügungsgeschäft voneinander abhängig?",
+    "kurzloesung": "Nein, nach dem Trennungsprinzip sind Verpflichtungs- und Verfügungsgeschäft rechtlich selbstständig zu beurteilen."
+  },
+  {
+    "fall_titel": "Das ist alles so abstrakt",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Abstraktionsprinzip",
+    "kernfrage": "Wird die Wirksamkeit des Verfügungsgeschäfts durch Mängel des Verpflichtungsgeschäfts beeinflusst?",
+    "kurzloesung": "Nein, nach dem Abstraktionsprinzip ist die Wirksamkeit des Verfügungsgeschäfts unabhängig vom Verpflichtungsgeschäft zu beurteilen."
+  },
+  {
+    "fall_titel": "Matador",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Bedingungszusammenhang bei mehreren Rechtsgeschäften",
+    "kernfrage": "Können mehrere Rechtsgeschäfte in einem Bedingungszusammenhang stehen?",
+    "kurzloesung": "Ja, Rechtsgeschäfte können durch ausdrückliche oder konkludente Vereinbarung in einen Bedingungszusammenhang gebracht werden."
+  },
+  {
+    "fall_titel": "Papas Bester",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Formnichtigkeit bei Schenkungsversprechen (§ 518 BGB)",
+    "kernfrage": "Welche Form erfordert ein Schenkungsversprechen?",
+    "kurzloesung": "Schenkungsversprechen bedürfen der notariellen Beurkundung. Der Formmangel wird durch Vollzug der Schenkung geheilt (§ 518 BGB)."
+  },
+  {
+    "fall_titel": "Miete & Mails",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Elektronische Form als Ersatz für Schriftform",
+    "kernfrage": "Kann die gesetzliche Schriftform durch elektronische Form ersetzt werden?",
+    "kurzloesung": "Grundsätzlich ja (§ 126a BGB), es sei denn, das Gesetz schließt dies aus oder verlangt eine strengere Form."
+  },
+  {
+    "fall_titel": "Mobilfunkvertrag auf Irrwegen",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Zugang elektronischer Willenserklärungen",
+    "kernfrage": "Wann gilt eine elektronische Willenserklärung als zugegangen?",
+    "kurzloesung": "Wenn sie so in den Machtbereich des Empfängers gelangt ist, dass unter normalen Umständen mit Kenntnisnahme zu rechnen ist."
+  },
+  {
+    "fall_titel": "Das Geschwätz von gestern",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Bindung an mündliche Nebenabreden",
+    "kernfrage": "Sind mündliche Nebenabreden zu einem schriftlichen Vertrag wirksam?",
+    "kurzloesung": "Grundsätzlich ja, es sei denn, die Parteien haben eine Schriftformklausel vereinbart oder die gesetzliche Form erfasst alle Abreden."
+  },
+  {
+    "fall_titel": "Edelmannswort",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Gentlemen's Agreement und Rechtsbindungswille",
+    "kernfrage": "Wann fehlt der Rechtsbindungswille bei Vereinbarungen?",
+    "kurzloesung": "Bei Gentlemen's Agreements fehlt der Rechtsbindungswille, wenn die Parteien erkennbar nur eine moralische, nicht aber rechtliche Bindung wollen."
+  },
+  {
+    "fall_titel": "Pablo Escobars Erben",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Nichtigkeit wegen Verstoßes gegen Verbotsgesetz (§ 134 BGB)",
+    "kernfrage": "Wann führt ein Gesetzesverstoß zur Nichtigkeit des Rechtsgeschäfts?",
+    "kurzloesung": "Ein Rechtsgeschäft ist nichtig, wenn es gegen ein gesetzliches Verbot verstößt, es sei denn, das Gesetz ordnet eine andere Rechtsfolge an."
+  },
+  {
+    "fall_titel": "Schwarzes Bad",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Schwarzarbeit und Nichtigkeit (§ 134 BGB)",
+    "kernfrage": "Sind Verträge über Schwarzarbeit nichtig?",
+    "kurzloesung": "Ja, Verträge über Schwarzarbeit verstoßen gegen das Schwarzarbeitsbekämpfungsgesetz und sind nach § 134 BGB nichtig."
+  },
+  {
+    "fall_titel": "Die Geliebte",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Sittenwidrigkeit von Mätressenverträgen (§ 138 BGB)",
+    "kernfrage": "Sind Verträge sittenwidrig, die sexuelle Leistungen zum Gegenstand haben?",
+    "kurzloesung": "Verträge, die sexuelle Leistungen zur notwendigen Gegenleistung machen, sind wegen Verstoßes gegen die guten Sitten nichtig (§ 138 I BGB)."
+  },
+  {
+    "fall_titel": "Pecunia non olet",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Sittenwidrigkeit bei Ausnutzung einer Zwangslage",
+    "kernfrage": "Wann ist ein Rechtsgeschäft wegen Wuchers sittenwidrig?",
+    "kurzloesung": "Bei auffälligem Missverhältnis zwischen Leistung und Gegenleistung und Ausnutzung einer Zwangslage oder Unerfahrenheit (§ 138 II BGB)."
+  },
+  {
+    "fall_titel": "Die Trierer Weinversteigerung",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Scherzgeschäft und Scheingeschäft (§§ 116, 117 BGB)",
+    "kernfrage": "Sind Scherzerklärungen und Scheingeschäfte wirksam?",
+    "kurzloesung": "Scherzerklärungen sind nichtig, wenn der Empfänger den Scherz erkennt (§ 118 BGB). Scheingeschäfte sind nichtig (§ 117 BGB)."
+  },
+  {
+    "fall_titel": "Steuersparversuch",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Scheingeschäft zur Steuerumgehung",
+    "kernfrage": "Ist ein nur zum Schein geschlossenes Geschäft zur Steuerersparnis wirksam?",
+    "kurzloesung": "Das Scheingeschäft ist nichtig (§ 117 I BGB), das verdeckte Geschäft ist nach den dafür geltenden Vorschriften zu beurteilen (§ 117 II BGB)."
+  },
+  {
+    "fall_titel": "Aus Spaß wird Ernst",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Erkennbarkeit der Scherzerklärung",
+    "kernfrage": "Was gilt, wenn eine Scherzerklärung vom Empfänger ernst genommen wird?",
+    "kurzloesung": "War der Scherz für den Empfänger nicht erkennbar, ist die Erklärung wirksam, kann aber wegen Irrtums angefochten werden."
+  },
+  {
+    "fall_titel": "Der doppelte Golf",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Anfechtung wegen Irrtums über den Erklärungsinhalt (§ 119 I Alt. 1 BGB)",
+    "kernfrage": "Kann eine Willenserklärung angefochten werden, wenn sich der Erklärende über deren Inhalt geirrt hat?",
+    "kurzloesung": "Ja, bei einem Inhaltsirrtum kann die Erklärung angefochten werden, wodurch das Rechtsgeschäft rückwirkend nichtig wird (§ 142 I BGB)."
+  },
+  {
+    "fall_titel": "Zahlendreher",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Anfechtung wegen Erklärungsirrtums (§ 119 I Alt. 2 BGB)",
+    "kernfrage": "Berechtigt ein Tippfehler oder Versprecher zur Anfechtung?",
+    "kurzloesung": "Ja, ein Erklärungsirrtum (Versprechen, Verschreiben, Vergreifen) berechtigt zur Anfechtung nach § 119 I Alt. 2 BGB."
+  },
+  {
+    "fall_titel": "Jede Menge Toilettenpapier",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Anfechtung bei Kalkulationsirrtum",
+    "kernfrage": "Kann wegen eines Rechenfehlers bei der Preiskalkulation angefochten werden?",
+    "kurzloesung": "Ein verdeckter Kalkulationsirrtum berechtigt nicht zur Anfechtung, nur wenn er sich im Erklärungsinhalt niedergeschlagen hat."
+  },
+  {
+    "fall_titel": "Die Verwechslung",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Identitätsirrtum vs. Eigenschaftsirrtum",
+    "kernfrage": "Wann liegt ein zur Anfechtung berechtigender Identitätsirrtum vor?",
+    "kurzloesung": "Ein Identitätsirrtum liegt vor, wenn sich der Erklärende über die Person des Vertragspartners irrt, nicht nur über dessen Eigenschaften."
+  },
+  {
+    "fall_titel": "Erwerb mit Folgen",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Anfechtung wegen Eigenschaftsirrtums (§ 119 II BGB)",
+    "kernfrage": "Welche Eigenschaften einer Sache oder Person berechtigen bei Irrtum zur Anfechtung?",
+    "kurzloesung": "Nur verkehrswesentliche Eigenschaften, die für die Wertschätzung oder Verwendbarkeit von erheblicher Bedeutung sind."
+  },
+  {
+    "fall_titel": "Socken statt Töpfe",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Übermittlungsirrtum (§ 120 BGB)",
+    "kernfrage": "Was gilt, wenn ein Bote die Erklärung falsch übermittelt?",
+    "kurzloesung": "Die falsch übermittelte Erklärung kann wie bei einem eigenen Erklärungsirrtum angefochten werden (§ 120 BGB)."
+  },
+  {
+    "fall_titel": "Falsch gerechnet",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Motivirrtum vs. Inhaltsirrtum",
+    "kernfrage": "Wann berechtigt ein Irrtum über die Beweggründe zur Anfechtung?",
+    "kurzloesung": "Ein bloßer Motivirrtum berechtigt grundsätzlich nicht zur Anfechtung, es sei denn, er hat sich im Erklärungsinhalt niedergeschlagen."
+  },
+  {
+    "fall_titel": "Die Schnapsdrossel",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Geschäftsunfähigkeit wegen Volltrunkenheit",
+    "kernfrage": "Sind Willenserklärungen in volltrunkenem Zustand wirksam?",
+    "kurzloesung": "Bei Ausschluss der freien Willensbildung durch Volltrunkenheit liegt Geschäftsunfähigkeit vor (§ 105 II BGB), die Erklärung ist nichtig."
+  },
+  {
+    "fall_titel": "Die falsche Pizza",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Anfechtungsfrist und Schadensersatz (§§ 121, 122 BGB)",
+    "kernfrage": "Welche Fristen gelten für die Irrtumsanfechtung und welche Folgen hat sie?",
+    "kurzloesung": "Die Anfechtung muss unverzüglich erfolgen (§ 121 BGB). Der Anfechtende haftet auf Ersatz des Vertrauensschadens (§ 122 BGB)."
+  },
+  {
+    "fall_titel": "Zu viele Brezeln",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Teilanfechtung",
+    "kernfrage": "Kann ein Rechtsgeschäft nur teilweise angefochten werden?",
+    "kurzloesung": "Eine Teilanfechtung ist möglich, wenn das Geschäft auch ohne den angefochtenen Teil geschlossen worden wäre (§ 139 BGB analog)."
+  },
+  {
+    "fall_titel": "Judex calculat",
+    "rechtsgebiet": "BGB AT",
+    "zentrales_problem": "Unbeachtlicher Rechtsfolgenirrtum",
+    "kernfrage": "Berechtigt ein Irrtum über die rechtlichen Folgen eines Geschäfts zur Anfechtung?",
+    "kurzloesung": "Nein, ein bloßer Rechtsfolgenirrtum ist unbeachtlich und berechtigt nicht zur Anfechtung."
+  }
+  ]
