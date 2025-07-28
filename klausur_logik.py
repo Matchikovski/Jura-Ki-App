@@ -5,13 +5,12 @@ import streamlit as st
 import re
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 
-# Konfiguriert die Gemini API mit st.secrets
+# Konfiguriert die Gemini API
 try:
     # Greift auf den Key aus der secrets.toml zu
     genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 except (AttributeError, KeyError):
-    # Dieser Fehler wird jetzt angezeigt, wenn der Secret nicht konfiguriert ist
-    pass # Im echten Betrieb wird die App hier stoppen, was gut ist.
+    pass 
 
 # Vollständiger Prompt für die Bewertungsfunktion
 system_prompt_ki_bewerter = """
@@ -127,7 +126,8 @@ def generiere_fall_gemini(schwierigkeit: int):
     """
     try:
         model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", system_instruction=system_prompt_fall_architekt)
-        response = model.generate_content("Erstelle einen neuen Klausursachverhalt.", generation_config={{"response_mime_type": "text/plain"}})
+        # KORREKTUR: Nur eine geschweifte Klammer für das Dictionary
+        response = model.generate_content("Erstelle einen neuen Klausursachverhalt.", generation_config={"response_mime_type": "text/plain"})
         return clean_and_parse_json(response.text)
     except Exception as e:
         print(f"Fehler in generiere_fall_gemini nach 3 Versuchen: {e}")
@@ -142,7 +142,8 @@ def bewerte_loesung_gemini(sachverhalt, loesungsskizze, loesungstext):
     try:
         input_prompt = f"SACHVERHALT:\\n{sachverhalt}\\n\\nLÖSUNGSSKIZZE:\\n{json.dumps(loesungsskizze, indent=2)}\\n\\nLÖSUNGSTEXT:\\n{loesungstext}"
         model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", system_instruction=system_prompt_ki_bewerter)
-        response = model.generate_content(input_prompt, generation_config={{"response_mime_type": "text/plain"}})
+        # KORREKTUR: Nur eine geschweifte Klammer für das Dictionary
+        response = model.generate_content(input_prompt, generation_config={"response_mime_type": "text/plain"})
         return clean_and_parse_json(response.text)
     except Exception as e:
         print(f"Fehler in bewerte_loesung_gemini nach 3 Versuchen: {e}")
