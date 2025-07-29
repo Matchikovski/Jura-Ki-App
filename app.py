@@ -1,5 +1,5 @@
 import streamlit as st
-# from dotenv import load_dotenv # DIESE ZEILE LÖSCHEN ODER AUSKOMMENTIEREN
+from dotenv import load_dotenv
 from streamlit_autorefresh import st_autorefresh
 from datetime import datetime
 import pandas as pd
@@ -12,10 +12,82 @@ from gamification_logik import check_achievements, ACHIEVEMENTS
 
 # --- KONFIGURATION & DATEN LADEN ---
 st.set_page_config(page_title="JuraKI-Mentor", page_icon="⚖️", layout="wide")
-# load_dotenv() # DIESE ZEILE LÖSCHEN ODER AUSKOMMENTIEREN
+load_dotenv()
 wissensdatenbank = lade_faelle("zivilrecht-faelle-json.json")
 embedding_modell = lade_embedding_modell()
 fall_embeddings = erstelle_fall_embeddings(wissensdatenbank, embedding_modell)
+
+
+# --- UI/UX VERBESSERUNGEN (VORSCHLAG 1) ---
+def apply_custom_styling():
+    """Wendet die visuelle Identität 'Examio Juris' an."""
+    st.markdown("""
+        <style>
+            /* Import Fonts */
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;600&display=swap');
+
+            /* Globale Variablen für Farben */
+            :root {
+                --primary-color: #003366; /* Tiefblau */
+                --background-color: #F8F9FA; /* Off-White */
+                --text-color: #212529; /* Dunkelgrau */
+                --success-color: #28a745; /* Grün */
+                --border-color: #dee2e6; /* Heller Rand */
+            }
+
+            /* Grundlegende Body-Styles */
+            html, body, [class*="st-"] {
+                font-family: 'Inter', sans-serif;
+                color: var(--text-color);
+                background-color: var(--background-color);
+            }
+
+            /* Spezifische Schriftart für Klausurinhalte */
+            .serif-text {
+                font-family: 'Source Serif 4', serif;
+                line-height: 1.7;
+                font-size: 1.1rem;
+            }
+            
+            /* Buttons anpassen */
+            .stButton>button {
+                border: 1px solid var(--primary-color);
+                color: var(--primary-color);
+                border-radius: 0.5rem;
+            }
+            .stButton>button:hover {
+                border-color: var(--primary-color);
+                background-color: #f0f0f0;
+                color: var(--primary-color);
+            }
+            /* Primärer Button */
+            .stButton>button[kind="primary"] {
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+            }
+            .stButton>button[kind="primary"]:hover {
+                background-color: #002244; /* Dunkleres Blau */
+                color: white;
+            }
+
+            /* Container für Sachverhalt und Lösung */
+            .content-box {
+                border: 1px solid var(--border-color);
+                border-radius: 10px;
+                padding: 2rem;
+                background-color: white;
+                height: 100%;
+            }
+            
+            /* Verbesserte Feedback-Anzeige */
+            .feedback-category {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+        </style>
+    """, unsafe_allow_html=True)
 
 # --- SESSION STATE INITIALISIERUNG ---
 if "app_mode" not in st.session_state:
@@ -68,46 +140,6 @@ def show_onboarding_screen():
             st.success("Dein Profil wurde gespeichert!")
             st.rerun()
 
-def show_main_app():
-    """Zeigt die Hauptanwendung nach dem Onboarding."""
-    with st.sidebar:
-        st.title("⚖️ JuraKI-Mentor")
-        st.session_state.app_mode = st.radio(
-            "Wähle einen Modus:",
-            ("Klausur-Training", "Jura-Chatbot (BGB AT)", "Mein Fortschritt"),
-            key="mode_selection"
-        )
-        st.divider()
-
-        if st.session_state.app_mode == "Klausur-Training":
-            st.header("Steuerung")
-            default_difficulty = st.session_state.user_profile.get("start_schwierigkeit", 3)
-            gewaehlte_schwierigkeit = st.slider("Schwierigkeit auswählen", 0, 5, default_difficulty, help="0=Übungsfall, 1-2=Anfänger, 3-4=Fortgeschritten, 5=Examen")
-
-            if st.button("Neuen Fall generieren", type="primary", use_container_width=True):
-                with st.spinner("KI-Fall-Architekt entwirft einen neuen, maßgeschneiderten Fall..."):
-                    fall_daten = generiere_fall_gemini(schwierigkeit=gewaehlte_schwierigkeit)
-                    if fall_daten:
-                        st.session_state.current_fall = fall_daten
-                        st.session_state.remaining_seconds = fall_daten.get("bearbeitungszeit", 180) * 60
-                        st.session_state.timer_is_active = False
-                        st.session_state.feedback = None
-                        st.rerun()
-                    else:
-                        st.error("Fehler bei der Kommunikation mit der KI.")
-            
-            if st.session_state.current_fall and st.button("Aktuellen Fall zurücksetzen", use_container_width=True):
-                st.session_state.current_fall = None
-                st.rerun()
-
-    # --- MODUS-ROUTING ---
-    if st.session_state.app_mode == "Klausur-Training":
-        render_klausur_training()
-    elif st.session_state.app_mode == "Jura-Chatbot (BGB AT)":
-        render_chatbot()
-    elif st.session_state.app_mode == "Mein Fortschritt":
-        render_dashboard()
-
 def render_klausur_training():
     """Rendert die Benutzeroberfläche für das Klausur-Training."""
     if not st.session_state.current_fall:
@@ -149,13 +181,16 @@ def render_klausur_training():
 
     col_fall, col_loesung = st.columns(2)
     with col_fall:
+        st.markdown('<div class="content-box">', unsafe_allow_html=True)
         st.subheader("📋 Aktueller Sachverhalt")
-        st.markdown(fall.get('sachverhalt', 'Fehler beim Laden.'))
+        st.markdown(f"<div class='serif-text'>{fall.get('sachverhalt', 'Fehler beim Laden.')}</div>", unsafe_allow_html=True)
         st.divider()
         with st.expander("📖 Lösungsskizze anzeigen (Spoiler!)"):
             st.text("\n".join(fall.get('lösungsskizze', ['Keine Skizze verfügbar.'])))
+        st.markdown('</div>', unsafe_allow_html=True)
 
     with col_loesung:
+        st.markdown('<div class="content-box">', unsafe_allow_html=True)
         st.subheader("✍️ Deine Lösung")
         st.text_area("Schreibe deine Lösung hier hinein:", key="loesung_input", height=400)
         
@@ -178,18 +213,34 @@ def render_klausur_training():
                                 st.success(f"Erfolg freigeschaltet: {ach['icon']} {ach['name']}!")
                     else:
                         st.error("Bewertung fehlgeschlagen.")
+        st.markdown('</div>', unsafe_allow_html=True)
     
     if st.session_state.feedback:
         st.divider()
         st.subheader("📝 Dein Feedback")
-        fb = st.session_state.feedback
-        st.success(f"**Gesamt-Fazit:** {fb.get('fazit', 'N/A')}")
-        st.info(f"**Verbesserungsvorschlag:** {fb.get('verbesserungsvorschlag', 'N/A')}")
-        st.metric("Übereinstimmung mit Lösungsskizze", f"{fb.get('übereinstimmung_lösungsskizze', 0)}%")
-        with st.expander("Details zur Bewertung anzeigen"):
-            st.markdown(f"**Struktur & Schwerpunktsetzung:**\n{fb.get('feedback_struktur', 'N/A')}")
-            st.markdown(f"**Gutachtenstil:**\n{fb.get('feedback_gutachtenstil', 'N/A')}")
-            st.markdown(f"**Materielles Recht:**\n{fb.get('feedback_materielles_recht', 'N/A')}")
+        render_feedback(st.session_state.feedback)
+
+def render_feedback(feedback_data):
+    """Rendert die Feedback-Anzeige neu und strukturiert."""
+    st.success(f"**Gesamt-Fazit:** {feedback_data.get('fazit', 'N/A')}")
+    st.info(f"**Verbesserungsvorschlag:** {feedback_data.get('verbesserungsvorschlag', 'N/A')}")
+    st.divider()
+
+    st.markdown('<div class="feedback-category">', unsafe_allow_html=True)
+    st.markdown("<h5>Struktur & Schwerpunktsetzung</h5>", unsafe_allow_html=True)
+    st.metric("Übereinstimmung mit Lösungsskizze", f"{feedback_data.get('übereinstimmung_lösungsskizze', 0)}%")
+    st.markdown(feedback_data.get('feedback_struktur', 'N/A'))
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="feedback-category">', unsafe_allow_html=True)
+    st.markdown("<h5>Gutachtenstil</h5>", unsafe_allow_html=True)
+    st.markdown(feedback_data.get('feedback_gutachtenstil', 'N/A'))
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.markdown('<div class="feedback-category">', unsafe_allow_html=True)
+    st.markdown("<h5>Materielles Recht</h5>", unsafe_allow_html=True)
+    st.markdown(feedback_data.get('feedback_materielles_recht', 'N/A'))
+    st.markdown('</div>', unsafe_allow_html=True)
 
 def render_chatbot():
     """Rendert die Benutzeroberfläche für den Chatbot."""
@@ -263,8 +314,51 @@ def render_dashboard():
     df_display = df_display.rename(columns={'datum': 'Datum', 'thema': 'Thema', 'schwierigkeit': 'Schwierigkeit', 'bewertung': 'Bewertung (%)'})
     st.dataframe(df_display.sort_values(by="Datum", ascending=False), use_container_width=True)
 
+def show_main_app():
+    """Zeigt die Hauptanwendung nach dem Onboarding."""
+    apply_custom_styling()
+    
+    with st.sidebar:
+        st.title("⚖️ JuraKI-Mentor")
+        st.session_state.app_mode = st.radio(
+            "Wähle einen Modus:",
+            ("Klausur-Training", "Jura-Chatbot (BGB AT)", "Mein Fortschritt"),
+            key="mode_selection"
+        )
+        st.divider()
+
+        if st.session_state.app_mode == "Klausur-Training":
+            st.header("Steuerung")
+            default_difficulty = st.session_state.user_profile.get("start_schwierigkeit", 3)
+            gewaehlte_schwierigkeit = st.slider("Schwierigkeit auswählen", 0, 5, default_difficulty, help="0=Übungsfall, 1-2=Anfänger, 3-4=Fortgeschritten, 5=Examen")
+
+            if st.button("Neuen Fall generieren", type="primary", use_container_width=True):
+                with st.spinner("KI-Fall-Architekt entwirft einen neuen, maßgeschneiderten Fall..."):
+                    fall_daten = generiere_fall_gemini(schwierigkeit=gewaehlte_schwierigkeit)
+                    if fall_daten:
+                        st.session_state.current_fall = fall_daten
+                        st.session_state.remaining_seconds = fall_daten.get("bearbeitungszeit", 180) * 60
+                        st.session_state.timer_is_active = False
+                        st.session_state.feedback = None
+                        st.rerun()
+                    else:
+                        st.error("Fehler bei der Kommunikation mit der KI.")
+            
+            if st.session_state.current_fall and st.button("Aktuellen Fall zurücksetzen", use_container_width=True):
+                st.session_state.current_fall = None
+                st.rerun()
+
+    # --- MODUS-ROUTING ---
+    if st.session_state.app_mode == "Klausur-Training":
+        render_klausur_training()
+    elif st.session_state.app_mode == "Jura-Chatbot (BGB AT)":
+        render_chatbot()
+    elif st.session_state.app_mode == "Mein Fortschritt":
+        render_dashboard()
+
 # --- HAUPTROUTINE ---
 if st.session_state.user_profile is None:
+    apply_custom_styling()
     show_onboarding_screen()
 else:
     show_main_app()
