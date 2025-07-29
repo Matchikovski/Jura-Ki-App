@@ -1,5 +1,5 @@
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv # Auskommentiert für Deployment
 from streamlit_autorefresh import st_autorefresh
 from datetime import datetime
 import pandas as pd
@@ -12,7 +12,7 @@ from gamification_logik import check_achievements, ACHIEVEMENTS
 
 # --- KONFIGURATION & DATEN LADEN ---
 st.set_page_config(page_title="JuraKI-Mentor", page_icon="⚖️", layout="wide")
-load_dotenv()
+# load_dotenv() # Auskommentiert für Deployment
 wissensdatenbank = lade_faelle("zivilrecht-faelle-json.json")
 embedding_modell = lade_embedding_modell()
 fall_embeddings = erstelle_fall_embeddings(wissensdatenbank, embedding_modell)
@@ -218,7 +218,7 @@ def render_feedback(feedback_data):
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('<div class="feedback-category">', unsafe_allow_html=True)
     st.markdown("<h5>Materielles Recht</h5>", unsafe_allow_html=True)
-    st.markdown(feedback_data.get('materielles_recht', 'N/A'))
+    st.markdown(feedback_data.get('feedback_materielles_recht', 'N/A'))
     st.markdown('</div>', unsafe_allow_html=True)
 
 def render_chatbot():
