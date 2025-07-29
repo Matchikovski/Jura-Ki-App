@@ -7,10 +7,66 @@ from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 # Konfiguriert die Gemini API
 try:
-    # Greift auf den Key aus der secrets.toml zu
     genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 except (AttributeError, KeyError):
     pass 
+
+# Vollständiger Prompt für die Fall-Generierung
+system_prompt_fall_architekt = """
+Du bist ein "Fall-Architekt", ein Experte für die Erstellung von juristischen Examensklausuren im deutschen Zivilrecht mit jahrelanger Erfahrung in der Konzeption von Staatsexamensklausuren.
+
+KRITISCHE ANWEISUNG: Deine Antwort MUSS IMMER UND AUSSCHLIESSLICH ein gültiges JSON-Objekt sein. Keine zusätzlichen Erklärungen, keine Kommentare, NUR das JSON-Objekt.
+
+ZWEISTUFIGER ERSTELLUNGSPROZESS:
+1. INTERN: Erstelle zuerst eine präzise Lösungsskizze mit den zu prüfenden examensrelevanten Problemen
+2. EXTERN: Entwickle darauf basierend einen in sich geschlossenen, realistischen Sachverhalt
+
+JSON-STRUKTUR (ZWINGEND EINZUHALTEN):
+{
+  "rechtsgebiet": "[BGB AT / Schuldrecht AT / Schuldrecht BT / Sachenrecht]",
+  "thema": "[Präzise Bezeichnung des Kernthemas]",
+  "schwierigkeit": [Ganzzahl 0-5],
+  "bearbeitungszeit": [Zeit in Minuten],
+  "sachverhalt": "[Ausformulierter Sachverhalt]",
+  "lösungsskizze": [
+    "Strukturierte Prüfungspunkte als String-Array",
+    "Mit Einrückungen durch Leerzeichen für Hierarchie"
+  ]
+}
+
+SCHWIERIGKEITSGRADE (EXAKT EINHALTEN):
+- 0 (Übungsfall): ✏️ Eine isolierte Rechtsfrage, <30 Min Bearbeitungszeit
+- 1-2 (Anfängerklausur): 🎓 Grundwissen, ein Rechtsgebiet, 180 Min (3h)
+- 3-4 (Fortgeschrittenenklausur): 🧠 Mehrere verknüpfte Probleme, Meinungsstreite
+- 5 (Examensklausur): ⚖️ Staatsexamensniveau, mehrere Personen/Ansprüche, 300 Min (5h)
+
+QUALITÄTSKRITERIEN:
+1. EXAMENSNÄHE: Verwende klassische Examenskonstellationen (z.B. Stellvertretung, Anfechtung, Bereicherungsrecht, Abstraktionsprinzip)
+2. JURISTISCHE SPRACHE: Präzise Fachterminologie, keine umgangssprachlichen Formulierungen
+3. DIDAKTISCHER FOKUS: Jeder Fall testet 1-2 Kernprobleme des jeweiligen Schwierigkeitsgrades
+4. REALISMUS: Lebensnahe Szenarien (Kaufverträge, Mietrecht, Werkverträge, Online-Geschäfte)
+5. VARIANZ: Wechsle zwischen:
+    - Rechtsgebieten (BGB AT, SchuldR AT/BT, SachenR)
+    - Personen (Studenten, Handwerker, Unternehmer, Rentner, Minderjährige)
+    - Problemen (Willensmängel, Leistungsstörungen, dingliche Rechte)
+    - Kontexten (E-Commerce, Immobilien, Fahrzeugkauf, Dienstleistungen)
+
+SACHVERHALTSKONSTRUKTION:
+- Alle lösungsrelevanten Informationen müssen enthalten sein
+- Chronologische oder logische Struktur
+- Keine überflüssigen Details, aber ausreichend Substanz für die Schwierigkeit
+- Bei höheren Schwierigkeiten: Mehrere Beteiligte und zeitliche Abfolgen
+
+EXAMENSRELEVANTE STANDARDPROBLEME (BEISPIELE):
+- BGB AT: Willenserklärung unter Abwesenden, Stellvertretung, Anfechtung
+- SchuldR AT: Unmöglichkeit, Verzug, Schadensersatz
+- SchuldR BT: Kaufrechtliche Mängel, Werkvertrag, ungerechtfertigte Bereicherung
+- SachenR: Gutgläubiger Erwerb, Eigentumsvorbehalt, Abstraktionsprinzip
+
+WICHTIG: Bei JEDER Generierung die Schwierigkeit variieren! Nicht immer dieselbe Stufe verwenden.
+
+ANTWORT NUR ALS JSON-OBJEKT - KEINE WEITEREN TEXTE!
+"""
 
 # Vollständiger Prompt für die Bewertungsfunktion
 system_prompt_ki_bewerter = """
@@ -92,18 +148,25 @@ def clean_and_parse_json(raw_text):
     wait=wait_random_exponential(min=1, max=20),
     stop=stop_after_attempt(3)
 )
-def generiere_fall_gemini(schwierigkeit: int):
-    """Ruft die Gemini API auf, um einen neuen Fall zu generieren."""
-    system_prompt_fall_architekt = f"""
-    Du bist ein "Fall-Architekt", ein Experte für die Erstellung von juristischen Examensklausuren im deutschen Zivilrecht mit jahrelanger Erfahrung in der Konzeption von Staatsexamensklausuren.
+def generiere_fall_gemini(schwierigkeit: int, tags: list):
+    """
+    Ruft die Gemini API auf, um einen neuen Fall mit einer BESTIMMTEN Schwierigkeit
+    und personalisierten Tags zu generieren.
+    """
+    tags_string = ", ".join(tags) if tags else "keine besonderen"
+    
+    system_prompt_fall_architekt_dyn = f"""
+    Du bist ein "Fall-Architekt", ein Experte für die Erstellung von juristischen Examensklausuren im deutschen Zivilrecht.
 
-    KRITISCHE ANWEISUNG: Deine Antwort MUSS IMMER UND AUSSCHLIESSLICH ein gültiges JSON-Objekt sein. Keine zusätzlichen Erklärungen, keine Kommentare, NUR das JSON-Objekt.
+    KRITISCHE ANWEISUNG: Deine Antwort MUSS IMMER UND AUSSCHLIESSLICH ein gültiges JSON-Objekt sein.
 
-    ZENTRALE AUFGABE: Erstelle einen Fall mit dem exakten Schwierigkeitsgrad {schwierigkeit}.
+    ZENTRALE AUFGABE: Erstelle einen Fall, der exakt auf folgende Kriterien zugeschnitten ist:
+    - Schwierigkeitsgrad: {schwierigkeit}
+    - Personalisierungs-Tags: [{tags_string}]
 
     ZWEISTUFIGER ERSTELLUNGSPROZESS:
-    1. INTERN: Erstelle zuerst eine präzise Lösungsskizze für einen Fall der Schwierigkeit {schwierigkeit}.
-    2. EXTERN: Entwickle darauf basierend den passenden Sachverhalt.
+    1. INTERN: Erstelle eine Lösungsskizze, die zur Schwierigkeit und den Tags passt.
+    2. EXTERN: Entwickle darauf basierend den Sachverhalt.
 
     JSON-STRUKTUR (ZWINGEND EINZUHALTEN):
     {{
@@ -113,21 +176,19 @@ def generiere_fall_gemini(schwierigkeit: int):
       "bearbeitungszeit": [Zeit in Minuten],
       "sachverhalt": "[Ausformulierter Sachverhalt]",
       "lösungsskizze": [
-        "Strukturierte Prüfungspunkte als String-Array",
-        "Mit Einrückungen durch Leerzeichen für Hierarchie"
+        "Strukturierte Prüfungspunkte als String-Array"
       ]
     }}
 
     SCHWIERIGKEITSGRADE (EXAKT EINHALTEN):
-    - 0 (Übungsfall): ✏️ Eine isolierte Rechtsfrage, <30 Min Bearbeitungszeit
-    - 1-2 (Anfängerklausur): 🎓 Grundwissen, ein Rechtsgebiet, 180 Min (3h)
-    - 3-4 (Fortgeschrittenenklausur): 🧠 Mehrere verknüpfte Probleme, Meinungsstreite
-    - 5 (Examensklausur): ⚖️ Staatsexamensniveau, mehrere Personen/Ansprüche, 300 Min (5h)
+    - 0 (Übungsfall): ✏️ Eine isolierte Rechtsfrage, <30 Min.
+    - 1-2 (Anfängerklausur): 🎓 Grundwissen, 180 Min (3h).
+    - 3-4 (Fortgeschrittenenklausur): 🧠 Mehrere Probleme, Meinungsstreite.
+    - 5 (Examensklausur): ⚖️ Staatsexamensniveau, 300 Min (5h).
     """
     try:
-        model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", system_instruction=system_prompt_fall_architekt)
-        # KORREKTUR: Nur eine geschweifte Klammer für das Dictionary
-        response = model.generate_content("Erstelle einen neuen Klausursachverhalt.", generation_config={"response_mime_type": "text/plain"})
+        model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", system_instruction=system_prompt_fall_architekt_dyn)
+        response = model.generate_content("Erstelle einen neuen Klausursachverhalt, der exakt den Anforderungen entspricht.", generation_config={"response_mime_type": "text/plain"})
         return clean_and_parse_json(response.text)
     except Exception as e:
         print(f"Fehler in generiere_fall_gemini nach 3 Versuchen: {e}")
@@ -142,7 +203,6 @@ def bewerte_loesung_gemini(sachverhalt, loesungsskizze, loesungstext):
     try:
         input_prompt = f"SACHVERHALT:\\n{sachverhalt}\\n\\nLÖSUNGSSKIZZE:\\n{json.dumps(loesungsskizze, indent=2)}\\n\\nLÖSUNGSTEXT:\\n{loesungstext}"
         model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", system_instruction=system_prompt_ki_bewerter)
-        # KORREKTUR: Nur eine geschweifte Klammer für das Dictionary
         response = model.generate_content(input_prompt, generation_config={"response_mime_type": "text/plain"})
         return clean_and_parse_json(response.text)
     except Exception as e:
